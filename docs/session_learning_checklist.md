@@ -77,7 +77,9 @@ Danh sách này giúp theo dõi tiến trình nắm bắt kiến thức của em
 ### 1. Vấn đề (The Problem)
 - [x] Con người đọc log thì hiểu, nhưng làm sao máy móc (như Datadog/Elasticsearch) biết được cấu trúc log của bạn có hợp lệ không để vẽ Biểu đồ (Dashboard)?
 - [x] Nếu một request mất 10 giây để chạy, Log bình thường chỉ báo "Bắt đầu" ở giây thứ 1 và "Kết thúc" ở giây 10. Làm sao bạn biết chính xác 10 giây đó bị "nghẽn" ở hàm nào (Gọi Database? Gọi API ngoài? Xử lý ảnh?)?
-> **Câu trả lời:** 1. Nếu có một lập trình lỡ tay đổi. thì mình nên có quy ước rõ ràng. Nếu thay đổi log.info(...) sẽ bị lỗi log và cảnh báo.\n2. Ta nên chia ra xem luồng seasion xem mỗi luồng chạy bao nhiêu giây. Vai trò của Json schema trong trường hợp này là để giúp máy có thể hiểu được format chuẩn chỉ không bị việc đọc không hiểu log. Khác biệt giữa log ghi sự kiện là cho mình lỗi để debug còn tracing là điểm nghẽn ở đâu. Em nghĩ thế.
+> **Câu trả lời:** 
+1. Nếu có một lập trình lỡ tay đổi. thì mình nên có quy ước rõ ràng. Nếu thay đổi log.info(...) sẽ bị lỗi log và cảnh báo.
+2. Ta nên chia ra xem luồng seasion xem mỗi luồng chạy bao nhiêu giây. Vai trò của Json schema trong trường hợp này là để giúp máy có thể hiểu được format chuẩn chỉ không bị việc đọc không hiểu log. Khác biệt giữa log ghi sự kiện là cho mình lỗi để debug còn tracing là điểm nghẽn ở đâu. Em nghĩ thế.
 
 ### 2. Giải pháp (The Solution)
 - [x] Chạy script tự động xác thực (validate) cấu trúc JSON của file log dựa trên một khuôn mẫu (Schema) chuẩn.
